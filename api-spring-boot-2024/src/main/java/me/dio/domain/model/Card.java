@@ -2,6 +2,8 @@ package me.dio.domain.model;
 
 import jakarta.persistence.*;
 
+import java.math.BigDecimal;
+
 @Entity(name = "tb_card")
 public class Card {
 
@@ -12,8 +14,8 @@ public class Card {
     @Column(unique = true)
     private String number;
 
-    @Column(scale = 13, precision = 2)
-    private String limit;
+    @Column(name = "available_limit", precision = 13, scale = 2)
+    private BigDecimal limit;
 
     public Long getId() {
         return id;
@@ -31,11 +33,11 @@ public class Card {
         this.number = number;
     }
 
-    public String getLimit() {
+    public BigDecimal getLimit() {
         return limit;
     }
 
-    public void setLimit(String limit) {
+    public void setLimit(BigDecimal limit) {
         this.limit = limit;
     }
 
